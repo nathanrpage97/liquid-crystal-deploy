@@ -1,0 +1,11 @@
+version: "2"
+services:
+  app:
+    build: ./app
+    ports:
+      - "80:80"
+  server:
+    build: ./server
+    ports:
+      - "5000"
+    privileged: true

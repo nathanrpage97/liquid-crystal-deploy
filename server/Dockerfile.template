@@ -1,0 +1,9 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.8.0-3.10-run
+
+RUN install_packages git
+
+WORKDIR /usr/src/server
+
+RUN pip install git+https://github.com/nathanrpage97/liquid-crystal-server.git@v0.0.3
+
+CMD ["python", "-m", "liquid_crystal_server"]
