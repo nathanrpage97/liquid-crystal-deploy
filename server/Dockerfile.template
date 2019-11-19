@@ -1,6 +1,6 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.8.0-3.10-run
+FROM python:3.8.0-alpine3.10
 
-RUN install_packages git
+RUN apk add git
 
 WORKDIR /usr/src/server
 
