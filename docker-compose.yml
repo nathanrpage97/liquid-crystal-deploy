@@ -1,11 +1,19 @@
 version: "2"
+volumes:
+  notebooks:
 services:
   app:
     build: ./app
     ports:
-      - "80:80"
+      - 80:80
   server:
     build: ./server
-    ports:
-      - "5000"
     privileged: true
+    ports:
+      - 5000
+  jupyter:
+    build: ./jupyter
+    volumes:
+      - "notebooks:/home/jovyan/work"
+    ports:
+      - 8888:8888
