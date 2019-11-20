@@ -16,4 +16,4 @@ services:
     volumes:
       - "notebooks:/home/jovyan/work"
     ports:
-      - 8888:8888
+      - "8080:8080"
