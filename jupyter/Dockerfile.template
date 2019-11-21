@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-python:3.8.0-stretch
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-python:3.8.0-stretch as builder
 
 RUN apt update
 RUN apt install build-essential git
@@ -8,6 +8,11 @@ RUN pip install jupyter
 RUN pip install git+https://github.com/nathanrpage97/liquid-crystal.git@v0.0.1
 RUN ipython kernel install
 
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-python:3.8.0-stretch
+
+COPY --from=builder /usr/local/lib/python3.8/site-packages /usr/local/lib/python3.8/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+RUN apt update && apt-get install libzmq3-dev
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 WORKDIR /home/jovyan/work
 
