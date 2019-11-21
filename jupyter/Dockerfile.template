@@ -7,9 +7,8 @@ RUN pip install --upgrade pip
 RUN pip install jupyter
 RUN pip install git+https://github.com/nathanrpage97/liquid-crystal.git@v0.0.1
 RUN ipython kernel install
+
+COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 WORKDIR /home/jovyan/work
 
-CMD ["jupyter", "notebook", \
-  "--no-browser", "--ip=0.0.0.0", "--port=8080", "--allow-root", "--NotebookApp.token=''", \
-  "--NotebookApp.password=''", "--NotebookApp.base_kernel_url='/notebook/'", \
-  "--NotebookApp.base_project_url='/notebook/'"]
+CMD ["jupyter", "notebook"]
