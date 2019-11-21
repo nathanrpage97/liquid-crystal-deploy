@@ -1,9 +1,16 @@
-FROM python:3.8.0-alpine3.10
+FROM python:3.8.0-alpine3.10 as builder
 
 RUN apk add git gcc musl-dev
 
-WORKDIR /usr/src/server
 
 RUN pip install git+https://github.com/nathanrpage97/liquid-crystal-server.git@v0.0.3
+
+
+FROM python:3.8.0-alpine3.10
+
+COPY --from=builder /usr/local/lib/python3.8/site-packages /usr/local/lib/python3.8/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+
+WORKDIR /usr/src/server
 
 CMD ["python", "-m", "liquid_crystal_server"]
