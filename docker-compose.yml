@@ -1,17 +1,17 @@
-version: "2"
+version: "3"
 volumes:
   notebooks:
 services:
   app:
     build: ./app
     ports:
-      - 80:80
+      - "80:80"
   server:
     build: ./server
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
     ports:
-      - 5000
+      - "5000"
   jupyter:
     build: ./jupyter
     devices:
