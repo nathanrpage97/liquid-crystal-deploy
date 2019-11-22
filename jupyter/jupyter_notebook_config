@@ -1,5 +1,3 @@
-import os
-
 from IPython.lib import passwd
 
 c = get_config()

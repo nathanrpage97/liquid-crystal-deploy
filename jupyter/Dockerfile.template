@@ -1,4 +1,3 @@
-# FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-python:3.8.0-stretch as builder
 FROM python:3.8.0-alpine3.10 as builder
 
 RUN apk update && apk add build-base git libffi-dev openssl-dev python-dev curl krb5-dev linux-headers zeromq-dev
@@ -15,7 +14,7 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 
 RUN apk update && apk add zeromq-dev
 
-COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
+COPY jupyter_notebook_config /root/.jupyter/jupyter_notebook_config.py
 
 WORKDIR /home/jovyan/work
 
