@@ -3,7 +3,7 @@ FROM python:3.8.0-alpine3.10 as builder
 RUN apk update && apk add build-base git libffi-dev openssl-dev python-dev curl krb5-dev linux-headers zeromq-dev
 RUN pip install --upgrade pip
 RUN pip install jupyter
-RUN pip install git+https://github.com/nathanrpage97/liquid-crystal.git@v0.0.1
+RUN pip install git+https://github.com/nathanrpage97/liquid-crystal.git@v0.1.0
 RUN ipython kernel install
 
 FROM python:3.8.0-alpine3.10

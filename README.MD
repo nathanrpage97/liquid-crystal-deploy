@@ -4,7 +4,7 @@ A Balena deployment repository for the liquid-crystal app.
 
 ## Services
 
-- app: An nginx server that hosts the main webpage. It also acts as a proxy to redirect notebook and server traffic to the correct container and host
+- app: An nginx server that hosts the main webpage. It also acts as a proxy to redirect notebook and server traffic to the correct container and port
 
 - jupyter: A jupyter notebook service installed with the liquid-crystal driver. Allow for remote python access to control the display
 

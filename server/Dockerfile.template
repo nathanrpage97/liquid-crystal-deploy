@@ -2,7 +2,7 @@ FROM python:3.8.0-alpine3.10 as builder
 
 RUN apk add git gcc musl-dev
 
-RUN pip install git+https://github.com/nathanrpage97/liquid-crystal-server.git@v0.0.3
+RUN pip install git+https://github.com/nathanrpage97/liquid-crystal-server.git@v0.1.0
 
 
 FROM python:3.8.0-alpine3.10
